@@ -1,0 +1,51 @@
+<div class="jumbotron">
+  <div class="container">
+  <div class="search">
+ 
+ <form (submit)="search()">
+      <input type="text" class="form-control" [(ngModel)]="searchString" name="searchString" placeholder="search for a movie">
+      <br>
+      <button class="btn btn-primary btn-lg">Search</button>
+    </form>
+</div>
+</div>
+</div>
+
+<div class="panel">
+
+<div class="container" 
+  infinite-scroll
+  debounce
+  [infiniteScrollDistance]="scrolldistance"
+  [infiniteScrollThrottle]="throttle"
+  (scrolled)="onScroll(searchString) ">
+
+
+ <div *ngIf="searchResults" >
+
+
+  <div *ngFor="let movie of searchResults">
+    <div class="row">
+      <br>
+    <div class="col-lg-4"> 
+    <img class="thumbnail" [src]="'http://image.tmdb.org/t/p/w92' + movie.poster_path"/>
+     <button type="button"  class="btn btn-info" (click)="this.favcomp.postfavour(movie.id,movie.poster_path,movie.title,movie.release_date,movie.vote_average,movie.genre_ids,movie.overview)">Add to favourites</button>
+  </div>
+  <br>
+
+  <div class="col-lg-8 ">
+    <h2><label>Title:</label>{{movie.title}}</h2>
+   <h3><label>Release Date:</label>{{movie.release_date}}</h3>
+   <h3><label>Rating:</label>{{movie.vote_average}}</h3>
+   
+   <h3><label>Genre:</label>{{genremethod(movie.genre_ids)}}</h3>
+    <p ><label><h3>overview:</h3></label>{{movie.overview}}</p>
+    
+  </div>
+  
+    </div>
+  </div>
+  <br>
+    </div>
+</div>
+</div>

@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+img{
+    width:70%;
+}
+p{
+    font-size: 20px;
+}
+button{
+    align-content: center;
+
+}
+.search{
+    text-align: center;
+   
+}
+.panel{
+    background-image: url(app/movie-search/download.jpg);
+    background-repeat: repeat;
+    background-size: 100%;
+    color: white;
+}
+.navbar{
+    background: maroon;
+}
+h1{
+    text-align: center;
+    color: wheat;
+    font-family: 'Lobster', cursive;
+}
+
+nav{
+    font-size: 30px;
+    word-spacing: 50%;
+}

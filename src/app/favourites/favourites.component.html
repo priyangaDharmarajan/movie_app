@@ -1,0 +1,42 @@
+<!--<div class="jumbotron">
+  <div class="container">
+  <div class="search">
+ 
+ <form (submit)="search()">
+      <input type="text" class="form-control" [(ngModel)]="searchString" name="searchString" placeholder="search for a movie">
+      <br>
+      <button class="btn btn-primary btn-lg">Search</button>
+    </form>
+</div>
+</div>
+</div>-->
+
+
+
+<div class="container-fluid panel"> 
+ 
+
+ <div *ngIf="getResults" >
+
+
+  <div *ngFor="let movie of getResults">
+    <div class="row">
+    <div class="col-lg-4"> 
+    <img class="thumbnail" [src]="'http://image.tmdb.org/t/p/w92' + movie.posterpath"/>
+     <button type="button"  class="btn btn-info" (click)="deletefav(movie.id)">Delete</button>
+  </div>
+  <div class="col-lg-8">
+    <h2><label>Title:</label>{{movie.title}}</h2>
+   <h3><label>Release Date:</label>{{movie.releasedate}}</h3>
+   <h3><label>Rating:</label>{{movie.average}}</h3>
+   
+   <h3><label>Genre:</label>{{genremethod(movie.genreid)}}</h3>
+    <p ><label><h3>overview:</h3></label>{{movie.overview}}</p>
+    <h3><label>Update your Rating value:</label><input type="text" name="rating"[(ngModel)]="movie.average"></h3>
+    <button type="button"  class="btn btn-info" (click)="updateRating(movie.id,movie.posterpath,movie.title,movie.releasedate,movie.average,movie.genreid,movie.overview)">UPDATE</button>
+  </div>
+  
+    </div>
+  </div>
+    </div>
+</div>
